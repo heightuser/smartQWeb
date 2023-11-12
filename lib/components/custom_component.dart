@@ -11,6 +11,7 @@ class CustomComponent extends StatefulWidget {
 }
 
 class _CustomComponentState extends State<CustomComponent> {
+  // comment
   String path = "assets/images/spider.png";
   String basePath = "assets/images/spider.png";
   @override
