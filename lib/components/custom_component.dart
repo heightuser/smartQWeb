@@ -24,19 +24,19 @@ class _CustomComponentState extends State<CustomComponent> {
 
   Widget _buildButton(
       String label, int imageIndex, double baseWidth, double baseHeight,
-      {double? top, double? left, double? right, double? bottom}) {
+      {double? top, double? left, double? right, double? bottom, double? rotate}) {
     return Positioned(
       top: top,
       left: left,
       right: right,
       bottom: bottom,
       child: SizedBox(
-        height: 80,
-        width: baseWidth / 15,
+        height: 60,
+        width: baseWidth / 18,
         child: ClipPolygon(
           sides: 5,
           borderRadius: baseWidth / 240,
-          rotate: 110.0,
+          rotate: rotate ?? 0.0,
           boxShadows: [
             PolygonBoxShadow(color: Colors.black, elevation: 1.0),
             PolygonBoxShadow(color: Colors.grey, elevation: 5),
@@ -54,7 +54,7 @@ class _CustomComponentState extends State<CustomComponent> {
               ),
             ),
             onPressed: () {},
-            child: Text(label, style: TextStyle(fontSize: 12),maxLines: 4,),
+            child: Text(label, style: const TextStyle(fontSize: 8),maxLines: 4,overflow: TextOverflow.clip,),
             onHover: (bool isHovered) {
               setState(() {
                 path = isHovered ? images[imageIndex] : basePath;
@@ -94,8 +94,10 @@ class _CustomComponentState extends State<CustomComponent> {
                 ),
               ),
             ),
-            _buildButton("Flower", 0, baseWidth, baseHeight,
-                top: baseHeight / 4, left: baseWidth / 6),
+            _buildButton("QR code for ordering", 1, baseWidth, baseHeight,
+                top: baseHeight / 35, left: baseWidth / 30, rotate: 10),
+            _buildButton("Conference & Events", 1, baseWidth, baseHeight,
+                top: baseHeight / 16, left: baseWidth / 13,rotate: 335),
             _buildButton("Girl", 1, baseWidth, baseHeight,
                 top: baseHeight / 4, right: baseWidth / 6),
             _buildButton("Night", 2, baseWidth, baseHeight)
