@@ -19,6 +19,7 @@ class _CustomComponentState extends State<CustomComponent> {
     "assets/images/delivery.jpeg",
     "assets/images/cafe.jpeg"
   ];
+  List<Color> buttonColors = List.filled(6, Colors.purpleAccent);
   String path = "assets/images/base.jpeg";
   String basePath = "assets/images/base.jpeg";
 
@@ -39,12 +40,14 @@ class _CustomComponentState extends State<CustomComponent> {
         child: MouseRegion(
           cursor: SystemMouseCursors.click,
           onEnter: (_) {
-              setState(() {
-                path = images[imageIndex];
-              });
+            setState(() {
+              buttonColors[imageIndex] = Colors.purple;
+              path = images[imageIndex];
+            });
           },
           onExit: (_) {
             setState(() {
+              buttonColors[imageIndex] = Colors.purpleAccent;
               path = basePath;
             });
           },
@@ -61,7 +64,7 @@ class _CustomComponentState extends State<CustomComponent> {
                     PolygonBoxShadow(color: Colors.black, elevation: 1.0),
                     PolygonBoxShadow(color: Colors.grey, elevation: 2),
                   ],
-                  child: Container(color: Colors.purple,),
+                  child: Container(color: buttonColors[imageIndex]),
                 ),
                 Positioned(
                   top: 14,
@@ -71,8 +74,10 @@ class _CustomComponentState extends State<CustomComponent> {
                     child: Text(
                       label,
                       textAlign: TextAlign.center,
-                      style:
-                      const TextStyle(fontSize: 7, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: const TextStyle(
+                          fontSize: 7,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                       maxLines: 4,
                       overflow: TextOverflow.fade,
                     ),
