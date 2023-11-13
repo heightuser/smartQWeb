@@ -12,15 +12,15 @@ class CustomComponent extends StatefulWidget {
 
 class _CustomComponentState extends State<CustomComponent> {
   List<String> images = [
-    "assets/images/image1.jpeg",
-    "assets/images/image2.jpeg",
-    "assets/images/image3.jpeg",
-    "assets/images/image4.jpeg",
-    "assets/images/image5.jpeg",
-    "assets/images/image6.jpeg"
+    "assets/images/restaurant.jpeg",
+    "assets/images/pop_up_remote_event.jpeg",
+    "assets/images/micro_market_frictionless_retail.jpeg",
+    "assets/images/kitchen.jpeg",
+    "assets/images/delivery.jpeg",
+    "assets/images/cafe.jpeg"
   ];
-  String path = "assets/images/Base.jpeg";
-  String basePath = "assets/images/Base.jpeg";
+  String path = "assets/images/base.jpeg";
+  String basePath = "assets/images/base.jpeg";
 
   Widget _buildButton(
       String label, int imageIndex, double baseWidth, double baseHeight,
@@ -31,19 +31,30 @@ class _CustomComponentState extends State<CustomComponent> {
       right: right,
       bottom: bottom,
       child: SizedBox(
-        height: 100,
-        width: baseWidth / 12,
+        height: 80,
+        width: baseWidth / 15,
         child: ClipPolygon(
-          sides: 6,
+          sides: 5,
           borderRadius: baseWidth / 240,
-          rotate: 90.0,
+          rotate: 110.0,
           boxShadows: [
             PolygonBoxShadow(color: Colors.black, elevation: 1.0),
             PolygonBoxShadow(color: Colors.grey, elevation: 5),
           ],
           child: ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.hovered)) {
+                    return Colors.purple.shade400;
+                  } else {
+                    return Colors.purple.shade100;
+                  }
+                },
+              ),
+            ),
             onPressed: () {},
-            child: Text(label),
+            child: Text(label, style: TextStyle(fontSize: 12),maxLines: 4,),
             onHover: (bool isHovered) {
               setState(() {
                 path = isHovered ? images[imageIndex] : basePath;
@@ -65,7 +76,7 @@ class _CustomComponentState extends State<CustomComponent> {
         height: baseHeight,
         width: baseWidth,
         decoration: BoxDecoration(
-          color: Colors.red,
+          border: Border.all(color: Colors.black),
           image: DecorationImage(
             image: AssetImage(images[0]),
             fit: BoxFit.cover,
