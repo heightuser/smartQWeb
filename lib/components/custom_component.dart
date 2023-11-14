@@ -67,7 +67,7 @@ class _CustomComponentState extends State<CustomComponent> {
                   child: Container(color: buttonColors[imageIndex]),
                 ),
                 Positioned(
-                  top: 14,
+                  top: 15,
                   left: 15,
                   child: SizedBox(
                     width: baseWidth / 35,
@@ -121,16 +121,45 @@ class _CustomComponentState extends State<CustomComponent> {
                 ),
               ),
             ),
+
+
+            //pop-up remote event
             _buildButton("QR code for ordering", 1, baseWidth, baseHeight,
                 top: baseHeight / 35, left: baseWidth / 30, rotate: 10),
-            _buildButton("Conference & Events", 1, baseWidth, baseHeight,
+            _buildButton("Conference & events", 1, baseWidth, baseHeight,
                 top: baseHeight / 16, left: baseWidth / 13, rotate: 335),
+            _buildButton("Stock checks", 1, baseWidth, baseHeight,
+                top: baseHeight / 3.7, left: baseWidth / 3, rotate: 5),
+            _buildButton("Safety works", 1, baseWidth, baseHeight,
+                top: baseHeight / 3.4, left: baseWidth / 2.65, rotate: 330),
+            _buildButton("Ghost kitchen", 1, baseWidth, baseHeight,
+                top: baseHeight / 3.8, left: baseWidth / 2.38, rotate: 5),
+
+            //micro_market_frictionless_retail
+            _buildButton("Dashboards", 2, baseWidth, baseHeight,
+                top: baseHeight / 3.7, right: baseWidth / 2.5, rotate: 5),
+            _buildButton("Kitchen management", 2, baseWidth, baseHeight,
+                top: baseHeight / 3.35, right: baseWidth / 2.8, rotate: 330),
+            _buildButton("Scan & Go", 2, baseWidth, baseHeight,
+                top: baseHeight / 35, right: baseWidth / 5, rotate: 10),
+            _buildButton("Smart fridge & vending", 2, baseWidth, baseHeight,
+                top: baseHeight / 16.5, right: baseWidth / 6.3, rotate: 335),
+            _buildButton("Frictionless retail", 2, baseWidth, baseHeight,
+                top: baseHeight / 16, right: baseWidth / 15, rotate: 10),
+            _buildButton("Self serve checkout", 2, baseWidth, baseHeight,
+                top: baseHeight / 11, right: baseWidth / 40, rotate: 335),
+
+
+            //cafe
             _buildButton("Klosk for ordering", 5,baseWidth, baseHeight,
               bottom: baseHeight / 5.5, right: baseWidth / 1.165, rotate: 190),
-            _buildButton("Meeting & informal events", 4, baseWidth, baseHeight,
-                top: baseHeight / 1.105, left: baseWidth / 4.7, rotate: 8),
             _buildButton("Table service (QR code at table)", 5, baseWidth, baseHeight,
                 top: baseHeight / 2.2, left: baseWidth / 3.5, rotate: 190),
+
+
+            //delivery
+            _buildButton("Meeting & informal events", 4, baseWidth, baseHeight,
+                top: baseHeight / 1.105, left: baseWidth / 4.7, rotate: 8),
             _buildButton("On premise delivery", 4, baseWidth, baseHeight,
                 bottom: baseHeight / 5.5, right: baseWidth / 3, rotate: 18),
           ],
