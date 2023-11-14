@@ -152,16 +152,33 @@ class _CustomComponentState extends State<CustomComponent> {
 
             //cafe
             _buildButton("Klosk for ordering", 5,baseWidth, baseHeight,
-              bottom: baseHeight / 5.5, right: baseWidth / 1.165, rotate: 190),
-            _buildButton("Table service (QR code at table)", 5, baseWidth, baseHeight,
-                top: baseHeight / 2.2, left: baseWidth / 3.5, rotate: 190),
+              bottom: baseHeight / 5.5, right: baseWidth / 1.07, rotate: 190),
+            _buildButton("Table service(QR code at table)", 5, baseWidth, baseHeight,
+                top: baseHeight / 2.2, left: baseWidth / 4, rotate: 190),
+            _buildButton("Order status display", 5, baseWidth, baseHeight,
+                top: baseHeight / 1.60, left: baseWidth / 4.45, rotate: 32),
+            _buildButton("Rewards & promotions", 5, baseWidth, baseHeight,
+                top: baseHeight / 1.68, left: baseWidth / 3.7, rotate: 355),
+
 
 
             //delivery
             _buildButton("Meeting & informal events", 4, baseWidth, baseHeight,
-                top: baseHeight / 1.105, left: baseWidth / 4.7, rotate: 8),
+                top: baseHeight / 1.105, left: baseWidth / 6.3, rotate: 8),
             _buildButton("On premise delivery", 4, baseWidth, baseHeight,
-                bottom: baseHeight / 5.5, right: baseWidth / 3, rotate: 18),
+                bottom: baseHeight / 5.5, right: baseWidth / 3.2, rotate: 18),
+            _buildButton("Mobile orderings", 4, baseWidth, baseHeight,
+                bottom: baseHeight / 70, right: baseWidth / 2.92, rotate: 42),
+            _buildButton("Food lockers", 4, baseWidth, baseHeight,
+                bottom: baseHeight / 34, right: baseWidth / 3.4, rotate: 5),
+
+
+            //restaurant
+            _buildButton("Counter collectiom", 0, baseWidth, baseHeight,
+                bottom: baseHeight / 5.5, right: baseWidth / 14.5, rotate: 11),
+            _buildButton("Menu display", 0, baseWidth, baseHeight,
+                bottom: baseHeight / 6.8, right: baseWidth / 40, rotate: 335),
+
           ],
         ),
       ),
