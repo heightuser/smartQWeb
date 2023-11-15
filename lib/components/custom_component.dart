@@ -19,7 +19,17 @@ class _CustomComponentState extends State<CustomComponent> {
     "assets/images/delivery.jpeg",
     "assets/images/cafe.jpeg"
   ];
-  List<Color> buttonColors = List.filled(6, Colors.purpleAccent);
+  List<List<Color>> buttonColors = [
+    [Colors.greenAccent, Colors.green],
+    [Colors.orangeAccent, Colors.orange],
+    [Colors.blue.shade300, Colors.blue],
+    [Colors.redAccent, Colors.red],
+    [Colors.purpleAccent, Colors.purple],
+    [Colors.brown.shade300, Colors.brown]
+  ];
+
+  List<int> buttonColorState = List.filled(6, 0);
+
   String path = "assets/images/base.jpeg";
   String basePath = "assets/images/base.jpeg";
 
@@ -41,13 +51,15 @@ class _CustomComponentState extends State<CustomComponent> {
           cursor: SystemMouseCursors.click,
           onEnter: (_) {
             setState(() {
-              buttonColors[imageIndex] = Colors.purple;
+              // buttonColors[imageIndex] = Colors.purple;
+              buttonColorState[imageIndex] = 1;
               path = images[imageIndex];
             });
           },
           onExit: (_) {
             setState(() {
-              buttonColors[imageIndex] = Colors.purpleAccent;
+              // buttonColors[imageIndex] = Colors.purpleAccent;
+              buttonColorState[imageIndex] = 0;
               path = basePath;
             });
           },
@@ -64,7 +76,7 @@ class _CustomComponentState extends State<CustomComponent> {
                     PolygonBoxShadow(color: Colors.black, elevation: 1.0),
                     PolygonBoxShadow(color: Colors.grey, elevation: 2),
                   ],
-                  child: Container(color: buttonColors[imageIndex]),
+                  child: Container(color: buttonColors[imageIndex][buttonColorState[imageIndex]]),
                 ),
                 Positioned(
                   top: 15,
@@ -123,6 +135,12 @@ class _CustomComponentState extends State<CustomComponent> {
             ),
 
 
+            //restaurant
+            _buildButton("Counter collectiom", 0, baseWidth, baseHeight,
+                bottom: baseHeight / 5.5, right: baseWidth / 14.5, rotate: 11),
+            _buildButton("Menu display", 0, baseWidth, baseHeight,
+                bottom: baseHeight / 6.8, right: baseWidth / 40, rotate: 335),
+
             //pop-up remote event
             _buildButton("QR code for ordering", 1, baseWidth, baseHeight,
                 top: baseHeight / 35, left: baseWidth / 30, rotate: 10),
@@ -149,19 +167,6 @@ class _CustomComponentState extends State<CustomComponent> {
             _buildButton("Self serve checkout", 2, baseWidth, baseHeight,
                 top: baseHeight / 11, right: baseWidth / 40, rotate: 335),
 
-
-            //cafe
-            _buildButton("Klosk for ordering", 5,baseWidth, baseHeight,
-              bottom: baseHeight / 5.5, right: baseWidth / 1.07, rotate: 190),
-            _buildButton("Table service(QR code at table)", 5, baseWidth, baseHeight,
-                top: baseHeight / 2.2, left: baseWidth / 4, rotate: 190),
-            _buildButton("Order status display", 5, baseWidth, baseHeight,
-                top: baseHeight / 1.60, left: baseWidth / 4.45, rotate: 32),
-            _buildButton("Rewards & promotions", 5, baseWidth, baseHeight,
-                top: baseHeight / 1.68, left: baseWidth / 3.7, rotate: 355),
-
-
-
             //delivery
             _buildButton("Meeting & informal events", 4, baseWidth, baseHeight,
                 top: baseHeight / 1.105, left: baseWidth / 6.3, rotate: 8),
@@ -172,12 +177,21 @@ class _CustomComponentState extends State<CustomComponent> {
             _buildButton("Food lockers", 4, baseWidth, baseHeight,
                 bottom: baseHeight / 34, right: baseWidth / 3.4, rotate: 5),
 
-
-            //restaurant
-            _buildButton("Counter collectiom", 0, baseWidth, baseHeight,
-                bottom: baseHeight / 5.5, right: baseWidth / 14.5, rotate: 11),
-            _buildButton("Menu display", 0, baseWidth, baseHeight,
-                bottom: baseHeight / 6.8, right: baseWidth / 40, rotate: 335),
+            //cafe
+            _buildButton("Klosk for ordering", 5,baseWidth, baseHeight,
+              bottom: baseHeight / 5.5, right: baseWidth / 1.07, rotate: 190),
+            _buildButton("Table service(QR code at table)", 5, baseWidth, baseHeight,
+                top: baseHeight / 2.2, left: baseWidth / 4, rotate: 190),
+            _buildButton("Order status display", 5, baseWidth, baseHeight,
+                top: baseHeight / 1.60, left: baseWidth / 4.45, rotate: 32),
+            _buildButton("Rewards & promotions", 5, baseWidth, baseHeight,
+                top: baseHeight / 1.68, left: baseWidth / 3.7, rotate: 355),
+            _buildButton("Digital signage", 5, baseWidth, baseHeight,
+                top: baseHeight / 5, left: baseWidth / 100, rotate: 20),
+            _buildButton("Mobile for ordering", 5, baseWidth, baseHeight,
+                top: baseHeight / 4.2, left: baseWidth / 20, rotate: 55),
+            _buildButton("Digital menus", 5, baseWidth, baseHeight,
+                top: baseHeight / 3.5, left: baseWidth / 90, rotate: 20),
 
           ],
         ),
