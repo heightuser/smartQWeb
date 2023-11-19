@@ -29,7 +29,8 @@ class _CustomComponentState extends State<CustomComponent> {
     [const Color(0xffC00078), const Color(0xffCB4E9C)]
   ];
 
-  List<List<dynamic>> buttonColorState = List.filled(6, [false, ""]); // index-> [isSectionHovered, which label is hovered]
+  List<List<dynamic>> buttonColorState = List.filled(
+      6, [false, ""]); // index-> [isSectionHovered, which label is hovered]
 
   String path = "assets/images/base.jpg";
   String basePath = "assets/images/base.jpg";
@@ -142,9 +143,23 @@ class _CustomComponentState extends State<CustomComponent> {
 
             //restaurant
             _buildButton("Counter collection", 0, baseWidth, baseHeight,
-                bottom: baseHeight / 5.5, right: baseWidth / 14.5, rotate: 11),
+                bottom: baseHeight / 5.5, right: baseWidth / 7, rotate: 11),
             _buildButton("Menu display", 0, baseWidth, baseHeight,
-                bottom: baseHeight / 6.8, right: baseWidth / 40, rotate: 335),
+                bottom: baseHeight / 7, right: baseWidth / 9.85, rotate: 335),
+            _buildButton("Sell checkout kiosks", 0, baseWidth, baseHeight,
+                top: baseHeight / 5, right: baseWidth / 100, rotate: 200),
+            _buildButton(
+                "Image recognition smart checkout", 0, baseWidth, baseHeight,
+                top: baseHeight / 4.2, right: baseWidth / 20, rotate: 235),
+            _buildButton("Tills", 0, baseWidth, baseHeight,
+                top: baseHeight / 3.5, right: baseWidth / 90, rotate: 200),
+            _buildButton(
+                "Table service (QR code at table)", 0, baseWidth, baseHeight,
+                top: baseHeight / 1.9, left: baseWidth / 1.068, rotate: 78),
+            _buildButton("Mobile pre-order", 0, baseWidth, baseHeight,
+                top: baseHeight / 1.85, right: baseWidth / 22, rotate: 115),
+            _buildButton("Kiosk for ordering", 0, baseWidth, baseHeight,
+                top: baseHeight / 2.15, right: baseWidth / 25, rotate: 80),
 
             //pop-up remote event
             _buildButton("QR code for ordering", 1, baseWidth, baseHeight,
@@ -176,24 +191,24 @@ class _CustomComponentState extends State<CustomComponent> {
 
             //delivery
             _buildButton("Meeting & informal events", 4, baseWidth, baseHeight,
-                top: baseHeight / 1.105, left: baseWidth / 6.3, rotate: 8),
+                top: baseHeight / 1.15, left: baseWidth / 4.8, rotate: 8),
             _buildButton("On premise delivery", 4, baseWidth, baseHeight,
-                bottom: baseHeight / 5.5, right: baseWidth / 3.2, rotate: 18),
+                bottom: baseHeight / 5, right: baseWidth / 2.95, rotate: 18),
             _buildButton("Mobile orderings", 4, baseWidth, baseHeight,
-                bottom: baseHeight / 70, right: baseWidth / 2.92, rotate: 42),
+                bottom: baseHeight / 30, right: baseWidth / 2.65, rotate: 42),
             _buildButton("Food lockers", 4, baseWidth, baseHeight,
-                bottom: baseHeight / 34, right: baseWidth / 3.4, rotate: 5),
+                bottom: baseHeight / 20, right: baseWidth / 3, rotate: 5),
 
             //cafe
-            _buildButton("Klosk for ordering", 5, baseWidth, baseHeight,
-                bottom: baseHeight / 5.5, right: baseWidth / 1.07, rotate: 190),
+            _buildButton("Kiosk for ordering", 5, baseWidth, baseHeight,
+                bottom: baseHeight / 4.8, right: baseWidth / 1.18, rotate: 190),
             _buildButton(
                 "Table service(QR code at table)", 5, baseWidth, baseHeight,
-                top: baseHeight / 2.2, left: baseWidth / 4, rotate: 190),
+                top: baseHeight / 2.2, left: baseWidth / 3.35, rotate: 190),
             _buildButton("Order status display", 5, baseWidth, baseHeight,
-                top: baseHeight / 1.60, left: baseWidth / 4.45, rotate: 32),
+                top: baseHeight / 1.635, left: baseWidth / 3.90, rotate: 31),
             _buildButton("Rewards & promotions", 5, baseWidth, baseHeight,
-                top: baseHeight / 1.68, left: baseWidth / 3.7, rotate: 355),
+                top: baseHeight / 1.72, left: baseWidth / 3.35, rotate: 355),
             _buildButton("Digital signage", 5, baseWidth, baseHeight,
                 top: baseHeight / 5, left: baseWidth / 100, rotate: 20),
             _buildButton("Mobile for ordering", 5, baseWidth, baseHeight,
