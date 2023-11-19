@@ -12,26 +12,27 @@ class CustomComponent extends StatefulWidget {
 
 class _CustomComponentState extends State<CustomComponent> {
   List<String> images = [
-    "assets/images/restaurant.jpeg",
-    "assets/images/pop_up_remote_event.jpeg",
-    "assets/images/micro_market_frictionless_retail.jpeg",
-    "assets/images/kitchen.jpeg",
-    "assets/images/delivery.jpeg",
-    "assets/images/cafe.jpeg"
+    "assets/images/restaurant.jpg",
+    "assets/images/pop_up_remote_event.jpg",
+    "assets/images/micro_market_frictionless_retail.jpg",
+    "assets/images/kitchen.jpg",
+    "assets/images/delivery.jpg",
+    "assets/images/cafe.jpg"
   ];
   List<List<Color>> buttonColors = [
-    [Colors.greenAccent, Colors.green],
-    [Colors.orangeAccent, Colors.orange],
-    [Colors.blue.shade300, Colors.blue],
-    [Colors.redAccent, Colors.red],
-    [Colors.purpleAccent, Colors.purple],
-    [Colors.brown.shade300, Colors.brown]
+    // [hovered, non hovered]
+    [const Color(0xff2F3D8D), const Color(0xff6872AB)],
+    [const Color(0xffD3741B), const Color(0xffDD9861)],
+    [const Color(0xff96C33A), const Color(0xffB0D27F)],
+    [const Color(0xff569999), const Color(0xff7BB2B3)],
+    [const Color(0xff58247A), const Color(0xff8663A0)],
+    [const Color(0xffC00078), const Color(0xffCB4E9C)]
   ];
 
-  List<int> buttonColorState = List.filled(6, 0);
+  List<List<dynamic>> buttonColorState = List.filled(6, [false, ""]); // index-> [isSectionHovered, which label is hovered]
 
-  String path = "assets/images/base.jpeg";
-  String basePath = "assets/images/base.jpeg";
+  String path = "assets/images/base.jpg";
+  String basePath = "assets/images/base.jpg";
 
   Widget _buildButton(
       String label, int imageIndex, double baseWidth, double baseHeight,
@@ -51,33 +52,37 @@ class _CustomComponentState extends State<CustomComponent> {
           cursor: SystemMouseCursors.click,
           onEnter: (_) {
             setState(() {
-              // buttonColors[imageIndex] = Colors.purple;
-              buttonColorState[imageIndex] = 1;
+              buttonColorState[imageIndex] = [true, label];
               path = images[imageIndex];
             });
           },
           onExit: (_) {
             setState(() {
-              // buttonColors[imageIndex] = Colors.purpleAccent;
-              buttonColorState[imageIndex] = 0;
+              buttonColorState[imageIndex] = [false, ""];
               path = basePath;
             });
           },
-          child: Container(
+          child: SizedBox(
             height: 65,
             width: baseWidth / 16,
             child: Stack(
               children: [
                 ClipPolygon(
-                  sides: 5,
-                  borderRadius: baseWidth / 240,
-                  rotate: rotate ?? 0.0,
-                  boxShadows: [
-                    PolygonBoxShadow(color: Colors.black, elevation: 1.0),
-                    PolygonBoxShadow(color: Colors.grey, elevation: 2),
-                  ],
-                  child: Container(color: buttonColors[imageIndex][buttonColorState[imageIndex]]),
-                ),
+                    sides: 5,
+                    borderRadius: baseWidth / 240,
+                    rotate: rotate ?? 0.0,
+                    boxShadows: [
+                      PolygonBoxShadow(
+                          color: const Color(0xff000000), elevation: 1.0),
+                      PolygonBoxShadow(
+                          color: const Color(0xff808080), elevation: 2),
+                    ],
+                    child: Container(
+                        color: buttonColorState[imageIndex][1] == label
+                            ? buttonColors[imageIndex][0]
+                            : (buttonColorState[imageIndex][0]
+                                ? buttonColors[imageIndex][1]
+                                : const Color(0xffC8C7C7)))),
                 Positioned(
                   top: 15,
                   left: 15,
@@ -89,10 +94,11 @@ class _CustomComponentState extends State<CustomComponent> {
                       style: const TextStyle(
                         fontSize: 7,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Color(0xffFFFFFF),
                       ),
                       maxLines: 4,
-                      softWrap: true, // Enable text wrapping
+                      softWrap: true,
+                      // Enable text wrapping
                       overflow: TextOverflow.fade,
                     ),
                   ),
@@ -107,7 +113,7 @@ class _CustomComponentState extends State<CustomComponent> {
 
   @override
   Widget build(BuildContext context) {
-    double baseHeight = min(MediaQuery.of(context).size.height * 0.9, 800);
+    double baseHeight = min(MediaQuery.of(context).size.height * 0.9, 720);
     double baseWidth = min(MediaQuery.of(context).size.width * 0.9, 1200);
 
     return Center(
@@ -115,10 +121,10 @@ class _CustomComponentState extends State<CustomComponent> {
         height: baseHeight,
         width: baseWidth,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
+          border: Border.all(color: const Color(0xff000000)),
           image: DecorationImage(
             image: AssetImage(images[0]),
-            fit: BoxFit.cover,
+            fit: BoxFit.fitWidth,
           ),
         ),
         child: Stack(
@@ -129,14 +135,13 @@ class _CustomComponentState extends State<CustomComponent> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(path),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fitWidth,
                 ),
               ),
             ),
 
-
             //restaurant
-            _buildButton("Counter collectiom", 0, baseWidth, baseHeight,
+            _buildButton("Counter collection", 0, baseWidth, baseHeight,
                 bottom: baseHeight / 5.5, right: baseWidth / 14.5, rotate: 11),
             _buildButton("Menu display", 0, baseWidth, baseHeight,
                 bottom: baseHeight / 6.8, right: baseWidth / 40, rotate: 335),
@@ -146,18 +151,8 @@ class _CustomComponentState extends State<CustomComponent> {
                 top: baseHeight / 35, left: baseWidth / 30, rotate: 10),
             _buildButton("Conference & events", 1, baseWidth, baseHeight,
                 top: baseHeight / 16, left: baseWidth / 13, rotate: 335),
-            _buildButton("Stock checks", 1, baseWidth, baseHeight,
-                top: baseHeight / 3.7, left: baseWidth / 3, rotate: 5),
-            _buildButton("Safety works", 1, baseWidth, baseHeight,
-                top: baseHeight / 3.4, left: baseWidth / 2.65, rotate: 330),
-            _buildButton("Ghost kitchen", 1, baseWidth, baseHeight,
-                top: baseHeight / 3.8, left: baseWidth / 2.38, rotate: 5),
 
             //micro_market_frictionless_retail
-            _buildButton("Dashboards", 2, baseWidth, baseHeight,
-                top: baseHeight / 3.7, right: baseWidth / 2.5, rotate: 5),
-            _buildButton("Kitchen management", 2, baseWidth, baseHeight,
-                top: baseHeight / 3.35, right: baseWidth / 2.8, rotate: 330),
             _buildButton("Scan & Go", 2, baseWidth, baseHeight,
                 top: baseHeight / 35, right: baseWidth / 5, rotate: 10),
             _buildButton("Smart fridge & vending", 2, baseWidth, baseHeight,
@@ -166,6 +161,18 @@ class _CustomComponentState extends State<CustomComponent> {
                 top: baseHeight / 16, right: baseWidth / 15, rotate: 10),
             _buildButton("Self serve checkout", 2, baseWidth, baseHeight,
                 top: baseHeight / 11, right: baseWidth / 40, rotate: 335),
+
+            //kitchen
+            _buildButton("Dashboards", 3, baseWidth, baseHeight,
+                top: baseHeight / 3.7, right: baseWidth / 2.5, rotate: 5),
+            _buildButton("Kitchen management", 3, baseWidth, baseHeight,
+                top: baseHeight / 3.35, right: baseWidth / 2.8, rotate: 330),
+            _buildButton("Stock checks", 3, baseWidth, baseHeight,
+                top: baseHeight / 3.7, left: baseWidth / 3, rotate: 5),
+            _buildButton("Safety works", 3, baseWidth, baseHeight,
+                top: baseHeight / 3.4, left: baseWidth / 2.65, rotate: 330),
+            _buildButton("Ghost kitchen", 3, baseWidth, baseHeight,
+                top: baseHeight / 3.8, left: baseWidth / 2.38, rotate: 5),
 
             //delivery
             _buildButton("Meeting & informal events", 4, baseWidth, baseHeight,
@@ -178,9 +185,10 @@ class _CustomComponentState extends State<CustomComponent> {
                 bottom: baseHeight / 34, right: baseWidth / 3.4, rotate: 5),
 
             //cafe
-            _buildButton("Klosk for ordering", 5,baseWidth, baseHeight,
-              bottom: baseHeight / 5.5, right: baseWidth / 1.07, rotate: 190),
-            _buildButton("Table service(QR code at table)", 5, baseWidth, baseHeight,
+            _buildButton("Klosk for ordering", 5, baseWidth, baseHeight,
+                bottom: baseHeight / 5.5, right: baseWidth / 1.07, rotate: 190),
+            _buildButton(
+                "Table service(QR code at table)", 5, baseWidth, baseHeight,
                 top: baseHeight / 2.2, left: baseWidth / 4, rotate: 190),
             _buildButton("Order status display", 5, baseWidth, baseHeight,
                 top: baseHeight / 1.60, left: baseWidth / 4.45, rotate: 32),
@@ -192,19 +200,9 @@ class _CustomComponentState extends State<CustomComponent> {
                 top: baseHeight / 4.2, left: baseWidth / 20, rotate: 55),
             _buildButton("Digital menus", 5, baseWidth, baseHeight,
                 top: baseHeight / 3.5, left: baseWidth / 90, rotate: 20),
-
           ],
         ),
       ),
-    );
-  }
-}
-
-extension PositionedExtension on Widget {
-  Widget align(Alignment alignment) {
-    return Align(
-      alignment: alignment,
-      child: this,
     );
   }
 }
