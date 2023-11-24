@@ -122,7 +122,6 @@ class _CustomComponentState extends State<CustomComponent> {
         height: baseHeight,
         width: baseWidth,
         decoration: BoxDecoration(
-          border: Border.all(color: const Color(0xff000000)),
           image: DecorationImage(
             image: AssetImage(images[0]),
             fit: BoxFit.fitWidth,
