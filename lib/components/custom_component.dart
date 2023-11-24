@@ -124,7 +124,7 @@ class _CustomComponentState extends State<CustomComponent> {
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0xff000000)),
           image: DecorationImage(
-            image: AssetImage(path),
+            image: AssetImage(basePath),
             fit: BoxFit.fitWidth,
           ),
         ),
