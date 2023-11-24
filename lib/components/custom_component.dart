@@ -99,8 +99,7 @@ class _CustomComponentState extends State<CustomComponent> {
                       ),
                       maxLines: 4,
                       softWrap: true,
-                      // Enable text wrapping
-                      overflow: TextOverflow.fade,
+                      overflow: TextOverflow.clip,
                     ),
                   ),
                 ),
