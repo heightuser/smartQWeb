@@ -15,7 +15,7 @@ class _CustomComponentState extends State<CustomComponent> {
     "assets/images/restaurant.jpg",
     "assets/images/pop_up_remote_event.jpg",
     "assets/images/micro_market_frictionless_retail.jpg",
-    "assets/images/kitchen.jpg",
+    "assets/images/kitchen.jpeg",
     "assets/images/delivery.jpg",
     "assets/images/cafe.jpg"
   ];
